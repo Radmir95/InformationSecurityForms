@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSecurityForms", "InformationSecurityForms\InformationSecurityForms.csproj", "{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B8C72B5-6873-4F9D-A900-E228946A2578}
+	EndGlobalSection
+EndGlobal
