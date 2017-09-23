@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSecurityForms", "InformationSecurityForms\InformationSecurityForms.csproj", "{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions", "Functions\Functions.csproj", "{F91BD0D3-69B4-4B95-95D6-931632B79E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformationSecurityForms.CountWitnessForm", "InformationSecurityForms.CountWitnessForm\InformationSecurityForms.CountWitnessForm.csproj", "{582FE7ED-9426-4676-9C4D-1393F47B144C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3DA618C-8B63-44F2-96E1-37C4ECDAA8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91BD0D3-69B4-4B95-95D6-931632B79E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91BD0D3-69B4-4B95-95D6-931632B79E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91BD0D3-69B4-4B95-95D6-931632B79E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91BD0D3-69B4-4B95-95D6-931632B79E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582FE7ED-9426-4676-9C4D-1393F47B144C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582FE7ED-9426-4676-9C4D-1393F47B144C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582FE7ED-9426-4676-9C4D-1393F47B144C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582FE7ED-9426-4676-9C4D-1393F47B144C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
