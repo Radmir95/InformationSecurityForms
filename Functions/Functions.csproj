@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllDerivBelow.cs" />
+    <Compile Include="EylerFunction.cs" />
     <Compile Include="MillerRabin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
