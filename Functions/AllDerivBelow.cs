@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Numerics;
 
 namespace Functions
 {
     public class AllDerivBelow
     {
 
-        public ArrayList FindAllDerivBelow(int n) {
+        public ArrayList FindAllDerivBelow(BigInteger n) {
 
             var result = new ArrayList();
 

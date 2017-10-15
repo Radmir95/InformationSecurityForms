@@ -87,6 +87,63 @@ namespace Functions
             return k;
         }
 
+        public int CountWitnessOfPrimeMillerRabin(BigInteger n)
+        {
+
+            if (n <= 1)
+                return 1;
+            if (n == 2)
+                return 2;
+
+            var t = n - 1;
+            BigInteger a;
+            var s = 0;
+            while (t % 2 == 0)
+            {
+                //Представить n − 1 в виде 2s·t, где t нечётно, можно сделать последовательным делением n - 1 на 2.
+                s++;
+                t = t / 2;
+            }
+
+            var k = SearchK(n);
+            k++;
+            int count = 1;
+
+            for (a = 2; a < n - 2; a++)
+                for (var i = 0; i < k; i++)
+                {
+
+                    //a = RandomIntegerBelow(n - 1); // Выбрать случайное целое число a в отрезке [2, n − 2]
+                    //a = firstPrimes[i];
+                    var x = BigInteger.ModPow(a, t, n); // вычисляется с помощью алгоритма возведения в степень по модулю
+                    if ((x == 1) || (x == n - 1))
+                        continue; //то перейти на следующую итерацию цикла А
+
+                    var kk = true;
+
+                    Parallel.For(0, s - 1, (ii, loopState) =>
+                    {
+                        x = BigInteger.ModPow(x, 2, n);
+                        if (x == 1)
+                        {
+                            count++;
+                            loopState.Break();
+                        }
+                        if (x == n - 1)
+                            loopState.Break();
+
+                    });
+                    if (!kk)
+                        count = count ;
+
+                    if (x != n - 1)
+                        count = count;
+                }
+
+            return count;
+
+        }
+
         public bool Miller_Rabin(BigInteger n) // return true если простое 
         {
             if (n <= 1)
