@@ -10,14 +10,14 @@ namespace Functions
 
             var result = new ArrayList();
 
-            for (var i = 1; i <= n/2; i++)
+            for (int i = 1; i <= n/2; i++)
             {
                 if (n % i == 0)
                 {
                     result.Add(i);
                 }
             }
-            result.Add(n);
+            result.Add(int.Parse(n.ToString()));
 
             return result;
 

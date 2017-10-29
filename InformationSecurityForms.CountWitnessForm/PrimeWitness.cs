@@ -18,15 +18,17 @@ namespace InformationSecurityForms.CountWitnessForm
             InitializeComponent();
         }
 
-        private const int deriv = 5;
-
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // read p and q from textboxes
             var p = int.Parse(p1.Text);
             var q = int.Parse(q1.Text);
 
+            // fill n1 - textbox
             n1.Text = "n = " + p * q;
 
+            // find number of witness
             var result = NumOfWitnessOfPrime(p, q);
 
             result1.Text = result.ToString();
@@ -35,7 +37,6 @@ namespace InformationSecurityForms.CountWitnessForm
         private void button2_Click_1(object sender, EventArgs e)
         {
             var stopWatch = Stopwatch.StartNew();
-            // var upperNum = BigInteger.Parse(upperNumber.Text);
             var upperNum = Int32.Parse(upperNumber.Text);
 
             var result = Sieve(upperNum).ToList();
@@ -43,27 +44,35 @@ namespace InformationSecurityForms.CountWitnessForm
             tbpq.ResetText();
             tbresult.ResetText();
 
-            for (int i = 1; i < result.Count; i++)
+            var resultstring = "";
+
+            int n = 0;
+
+            double result1 = 0;
+            double result2 = 0;
+
+            // boiler place
+            for (int i = 1; i < result.Count/2; i++)
                 for (int j = 0; j < i; j++)
                 {
-
                     var p = result[i];
                     var q = result[j];
 
-                    if (p * q > upperNum) continue;
+                    if (p * q > upperNum)
+                    {
+                        continue;
+                    }
                     var wtnprm = NumOfWitnessOfPrime(p, q);
 
-                    var patternpq = "p = {0}, q = {1} ";
+                    n++;
 
-                    var patternwtnprm = "Result= {0}, F(n)/4 = {1} \n";
+                    result1 += double.Parse(((double)wtnprm / (p * q)).ToString());
 
-                    var fn = (p - 1) * (q - 1);
-
-                    tbpq.AppendText(string.Format(patternpq, p, q));
-                    tbpq.AppendText(string.Format(patternwtnprm, wtnprm, fn/4));
+                    result2 += (double)(p-1)*(q-1)/4;
 
                 }
 
+            tbpq.Text = result1 / n + " " + result2 / n;
 
             stopWatch.Stop();
 
@@ -71,15 +80,18 @@ namespace InformationSecurityForms.CountWitnessForm
 
         }
 
-        private int NumOfWitnessOfPrime(BigInteger p, BigInteger q)
+        private int NumOfWitnessOfPrime(int p, int q)
         {
-
             //find Del P and Del Q
             var delp = adb.FindAllDerivBelow(p - 1);
             var delq = adb.FindAllDerivBelow(q - 1);
 
             // intersection of Del P and Del Q
-            var intersp = delp.ToArray().Intersect(delq.ToArray()).ToList();
+
+            var one = from int i in delp select i;
+            var second = from int i in delq select i;
+
+            var intersp = one.Intersect(second).ToList();
 
             // Step 2
             var step2 = new Dictionary<int, int>();
@@ -87,7 +99,7 @@ namespace InformationSecurityForms.CountWitnessForm
             for (int i = 0; i < intersp.Count; i++)
             {
 
-                var t = (int)(intersp[i]);
+                var t = intersp[i];
                 var s = 0;
                 while (t % 2 == 0)
                 {
@@ -96,18 +108,16 @@ namespace InformationSecurityForms.CountWitnessForm
                 }
 
                 if (step2.ContainsKey(s))
-                    step2[s] += EylerFunction.FindEylerFunction((int)intersp[i]);
+                    step2[s] += EylerFunction.FindEylerFunctionInt(intersp[i]);
                 else
-                    step2.Add(s, EylerFunction.FindEylerFunction((int)intersp[i]));
+                    step2.Add(s, EylerFunction.FindEylerFunctionInt(intersp[i]));
             }
 
             var result = 0;
 
             foreach (var keyval in step2)
             {
-
                 result += keyval.Value * keyval.Value;
-
             }
 
             return result;
@@ -128,25 +138,25 @@ namespace InformationSecurityForms.CountWitnessForm
             return primes;
         }
 
-        public static IEnumerable<BigInteger> Sieve(Int32 maxValue)
+        public static IEnumerable<int> Sieve(Int32 maxValue)
         {
             if (maxValue < 10)
             {
                 if (maxValue == 9 || maxValue == 8 || maxValue == 7)
                 {
-                    return new List<BigInteger>() { 2, 3, 5, 7 };
+                    return new List<int>() { 2, 3, 5, 7 };
                 }
                 else if (maxValue == 6 || maxValue == 5)
                 {
-                    return new List<BigInteger>() { 2, 3, 5 };
+                    return new List<int>() { 2, 3, 5 };
                 }
                 else if (maxValue == 4 || maxValue == 3)
                 {
-                    return new List<BigInteger>() { 2, 3 };
+                    return new List<int>() { 2, 3 };
                 }
                 else
                 {
-                    return new List<BigInteger>() { 2 };
+                    return new List<int>() { 2 };
                 }
             }
 
@@ -189,9 +199,8 @@ namespace InformationSecurityForms.CountWitnessForm
             }
 
             IEnumerable<int> result = Enumerable.Range(2, (int)maxValue).Where(l => primeMembershipArray[l]);
-            return result.Select(i => new BigInteger(i));
+            return result;
         }
-
 
     }
 }
